@@ -6,7 +6,7 @@ resource "aws_lb" "internal" {
   subnets            = [var.private_subnet]
 }
 
-# Define Target Group for Go Service
+# Define Target Group for Go  Service
 resource "aws_lb_target_group" "go_service" {
   name     = "go-service-tg"
   port     = 8080

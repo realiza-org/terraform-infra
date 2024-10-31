@@ -1,17 +1,33 @@
+# Load Balancer ARN
 output "load_balancer_arn" {
-  value = aws_lb.internal.arn
+  description = "The ARN of the internal load balancer"
+  value       = aws_lb.internal.arn
 }
 
-output "load_balancer_dns" {
-  value = aws_lb.internal.dns_name
+# DNS Name for Load Balancer
+output "load_balancer_dns_name" {
+  description = "The DNS name of the internal load balancer"
+  value       = aws_lb.internal.dns_name
 }
 
-output "go_service_lb_target_group_arn" {
+# Target Group ARNs
+output "go_service_target_group_arn" {
+  description = "The ARN of the target group for the Go service"
   value       = aws_lb_target_group.go_service.arn
-  description = "ARN do grupo de destino do balanceador de carga para o serviço Go"
 }
 
-output "nodejs_service_lb_target_group_arn" {
+output "nodejs_service_target_group_arn" {
+  description = "The ARN of the target group for the NodeJS service"
   value       = aws_lb_target_group.nodejs_service.arn
-  description = "ARN do grupo de destino do balanceador de carga para o serviço NodeJS"
+}
+
+# Listener ARNs
+output "go_service_listener_arn" {
+  description = "The ARN of the listener for the Go service"
+  value       = aws_lb_listener.go_service.arn
+}
+
+output "nodejs_service_listener_arn" {
+  description = "The ARN of the listener for the NodeJS service"
+  value       = aws_lb_listener.nodejs_service.arn
 }
