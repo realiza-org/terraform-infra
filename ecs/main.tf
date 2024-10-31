@@ -67,7 +67,7 @@ resource "aws_ecs_service" "go_service" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.go_service.arn
+    target_group_arn = var.go_service_lb_target_group_arn
     container_name   = "go-service-container"
     container_port   = 8080
   }
@@ -92,7 +92,7 @@ resource "aws_ecs_service" "nodejs_service" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.nodejs_service.arn
+    target_group_arn = var.nodejs_service_lb_target_group_arn
     container_name   = "nodejs-service-container"
     container_port   = 3000
   }

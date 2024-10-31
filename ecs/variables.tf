@@ -31,3 +31,13 @@ variable "private_subnet" {
   description = "ID do subnet privado"
   type        = string
 }
+
+variable "go_service_lb_target_group_arn" {
+  description = "ARN do grupo de destino do balanceador de carga para o serviço Go"
+  type        = string
+}
+
+variable "nodejs_service_lb_target_group_arn" {
+  description = "ARN do grupo de destino do balanceador de carga para o serviço NodeJS"
+  type        = string
+}
