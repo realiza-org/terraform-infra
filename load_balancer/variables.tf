@@ -11,3 +11,9 @@ variable "private_subnet" {
 variable "lb_internal_name" {
   default = "internal-lb"
 }
+
+variable "environment" {
+  description = "The environment for the resources"
+  type        = string
+  default     = "development"
+}
