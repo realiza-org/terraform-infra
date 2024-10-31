@@ -1,19 +1,24 @@
-terraform {
-  cloud {
-    organization = "realiza-org-terraform"
-    workspaces {
-      name = "realiza-org-aws-infra"
-    }
-  }
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "5.73.0"
-    }
-  }
+provider "aws" {
+  region = "us-west-2"
 }
 
-module "main" {
-  source = "./modules"
+module "vpc" {
+  source = "./vpc"
+}
+
+module "ecs" {
+  source         = "./ecs"
+  vpc_id         = module.vpc.vpc_id
+  private_subnet = module.vpc.private_subnet
+}
+
+module "load_balancer" {
+  source          = "./load_balancer"
+  vpc_id          = module.vpc.vpc_id
+  private_subnet  = module.vpc.private_subnet
+}
+
+module "api_gateway" {
+  source = "./api_gateway"
+  load_balancer_dns = module.load_balancer.load_balancer_dns
 }
