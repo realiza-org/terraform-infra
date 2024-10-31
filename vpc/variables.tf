@@ -11,7 +11,7 @@ variable "private_subnet_cidr_block" {
 }
 
 variable "availability_zone" {
-  default = "us-east-1a"
+  default = "us-west-2a"
 }
 
 variable "associate_with_private_ip" {
