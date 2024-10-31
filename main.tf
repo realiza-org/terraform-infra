@@ -21,4 +21,5 @@ module "load_balancer" {
 module "api_gateway" {
   source = "./api_gateway"
   load_balancer_dns = module.load_balancer.load_balancer_dns
+  load_balancer_arn = module.load_balancer.load_balancer_arn
 }
